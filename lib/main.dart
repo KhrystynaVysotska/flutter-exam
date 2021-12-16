@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_exam/button.dart';
 import 'package:provider/provider.dart';
 import 'grid_model.dart';
 
@@ -17,13 +16,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter Exam',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       debugShowCheckedModeBanner: false,
-      home: const GridScreen(),
+      home: Scaffold(backgroundColor: Colors.indigo, body: GridScreen()),
     );
   }
 }
@@ -40,7 +36,7 @@ class GridScreen extends StatelessWidget {
             crossAxisCount: 3,
           ),
           itemBuilder: (_, index) => grid.gridState.containsKey(index)
-              ? Button(onPressed: () => grid.changeButtonPosition(index))
+              ? grid.getButtonInCell(index)
               : Container(),
           itemCount: 15,
         );
