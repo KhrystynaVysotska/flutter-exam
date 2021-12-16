@@ -7,13 +7,15 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.circle,
-        color: Colors.red,
-        size: 40.0,
+    return Material(
+      child: IconButton(
+          icon: const Icon(
+            Icons.circle,
+            color: Colors.red,
+            size: 40.0,
+          ),
+          onPressed: onPressed,
       ),
-      onPressed: onPressed,
     );
   }
 }
