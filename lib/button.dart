@@ -1,19 +1,34 @@
+import 'grid_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Button extends StatelessWidget {
-  const Button({Key? key, required this.onPressed}) : super(key: key);
+  Button({
+    Key? key,
+    required this.id,
+    required this.color,
+    required this.cellIndex,
+  }) : super(key: key);
 
-  final VoidCallback onPressed;
+  int id;
+  Color color;
+  int cellIndex;
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.circle,
-        color: Colors.red,
-        size: 40.0,
-      ),
-      onPressed: onPressed,
+    return Consumer<GridModel>(
+      builder: (context, grid, child) {
+        return Material(
+          child: IconButton(
+            icon: Icon(
+              Icons.circle,
+              color: color,
+              size: 40.0,
+            ),
+            onPressed: () => grid.changeButtonPosition(cellIndex),
+          ),
+        );
+      },
     );
   }
 }
